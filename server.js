@@ -20,7 +20,8 @@ const io = new Server(server,{
 
 
 io.on("connection",(socket)=>{
-    console.log(socket.id);
+    console.log('connection');
+    console.log("newConnection",socket.id);
     socket.on("new_bug",msg=>{
         console.log("new bug post",msg);
     })
@@ -33,7 +34,8 @@ app.use(cors());
 
 app.get('/',(req,res)=>{
     res.status(200).send('This is the server')
-})
+});
+
 
 server.listen(PORT,()=>{
     console.log(`Server is listening on port ${PORT}`);
