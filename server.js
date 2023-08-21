@@ -24,6 +24,7 @@ io.on("connection",(socket)=>{
     console.log("newConnection",socket.id);
     socket.on("new_bug",msg=>{
         console.log("new bug post",msg);
+        io.emit("new_bug_client",msg);
     })
 });
 
