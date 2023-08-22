@@ -22,9 +22,9 @@ const io = new Server(server,{
 io.on("connection",(socket)=>{
     console.log('connection');
     console.log("newConnection",socket.id);
-    socket.on("new_bug",msg=>{
-        console.log("new bug post",msg);
-        io.emit("new_bug_client",msg);
+    socket.on("new_bug",(msg,id,createdAt)=>{
+        console.log("new bug post",msg,id,createdAt);
+        io.emit("new_bug_client",msg,id,createdAt);
     })
 });
 
