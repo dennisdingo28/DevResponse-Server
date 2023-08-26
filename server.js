@@ -20,14 +20,18 @@ const io = new Server(server,{
 
 
 io.on("connection",(socket)=>{
-    console.log('connection');
-    console.log("newConnection",socket.id);
+    
     socket.on("new_bug",(bug)=>{
-        console.log(bug);
         io.emit("new_bug_client",bug);
     });
     socket.on("new_bug_amount",(bug)=>{
         io.emit("new_bug_client_amount",bug);
+    });
+    socket.on("new_bug_relevant",payload=>{
+        io.emit("new_bug_relevant_client",payload);
+    });
+    socket.on("new_bug_unrelevant",payload=>{
+        io.emit("new_bug_unrelevant_client",payload);
     });
 });
 
