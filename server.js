@@ -33,6 +33,12 @@ io.on("connection",(socket)=>{
     socket.on("new_bug_unrelevant",payload=>{
         io.emit("new_bug_unrelevant_client",payload);
     });
+    socket.on("new_bug_comment",payload=>{
+        io.emit("new_bug_comment_client",payload);
+    });
+    socket.on("new_bug_request_client",payload=>{
+        io.to(payload.userId).emit(payload);
+    });
 });
 
 
