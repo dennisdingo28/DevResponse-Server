@@ -20,7 +20,9 @@ const io = new Server(server,{
 
 
 io.on("connection",(socket)=>{
-    
+    const id = socket.handshake.query.id;
+    if(id && id.trim()!=='')
+        socket.join(id);
     socket.on("new_bug",(bug)=>{
         io.emit("new_bug_client",bug);
     });
@@ -37,6 +39,7 @@ io.on("connection",(socket)=>{
         io.emit("new_bug_comment_client",payload);
     });
     socket.on("new_bug_request",payload=>{
+        console.log("gote here ");
         io.to(payload.userId).emit("new_bug_request_client",payload);
     });
 });
