@@ -39,7 +39,6 @@ io.on("connection",(socket)=>{
         io.emit("new_bug_comment_client",payload);
     });
     socket.on("new_bug_request",payload=>{
-        console.log("gote here ");
         io.to(payload.userId).emit("new_bug_request_client",payload);
     });
 });
