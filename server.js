@@ -41,6 +41,10 @@ io.on("connection",(socket)=>{
     socket.on("new_bug_request",payload=>{
         io.to(payload.userId).emit("new_bug_request_client",payload);
     });
+    socket.on("new_response",payload=>{
+        console.log(payload);
+        io.to(payload.receiver).emit("new_response_client",{bug:payload.bug,comment:payload.comment,from:payload.from})
+    });
 });
 
 
