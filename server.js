@@ -45,6 +45,9 @@ io.on("connection",(socket)=>{
         console.log(payload);
         io.to(payload.receiver).emit("new_response_client",{bug:payload.bug,comment:payload.comment,from:payload.from})
     });
+    socket.on("bug_delete",payload=>{
+        io.emit("bug_delete_client",payload);
+    });
 });
 
 
