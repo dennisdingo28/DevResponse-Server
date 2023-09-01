@@ -48,6 +48,9 @@ io.on("connection",(socket)=>{
     socket.on("bug_delete",payload=>{
         io.emit("bug_delete_client",payload);
     });
+    socket.on("pingBug",payload=>{
+        io.emit("pingBug_client");
+    });
 });
 
 
