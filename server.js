@@ -49,7 +49,7 @@ io.on("connection",(socket)=>{
         io.emit("bug_delete_client",payload);
     });
     socket.on("pingBug",payload=>{
-        io.emit("pingBug_client");
+        io.emit("pingBug_client",payload);
     });
 });
 
