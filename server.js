@@ -14,7 +14,7 @@ const server = http.createServer(app);
 
 const io = new Server(server,{
     cors:{
-        origin: "http://localhost:3000",
+        origin: "https://dev-response-dennisdingo28.vercel.app",
     } 
 });
 
@@ -53,6 +53,10 @@ io.on("connection",(socket)=>{
     });
     socket.on("bug_solved",payload=>{
         io.emit("bug_solved_client",payload);
+    });
+    socket.on("new_message",payload=>{
+        io.to(payload.recipientId).emit("new_message_client",payload);
+
     });
 });
 
