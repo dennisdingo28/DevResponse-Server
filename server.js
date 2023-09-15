@@ -4,7 +4,6 @@ const http = require("http");
 const express = require('express');
 const {Server} = require("socket.io");
 
-const helmet = require('helmet');
 const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 
@@ -62,7 +61,6 @@ io.on("connection",(socket)=>{
 
 
 app.use(express.json());
-app.use(helmet());
 app.use(cors()); 
 
 app.get('/',(req,res)=>{
